@@ -8,7 +8,8 @@ import '../../modals/pokemons_list/pokemons_list_modals.dart';
 class PokemonListController extends GetxController {
   static PokemonListController instance = Get.find();
   String apiUrl = 'https://pokedex.alansantos.dev';
-  List<PekemonsListModels>? pokemonsListModels;
+  RxList<PekemonsListModels>? pokemonsListModels = <PekemonsListModels>[].obs;
+  RxList<PekemonsListModels>? filteredPokemonListModels = <PekemonsListModels>[].obs;
 
 
   @override
@@ -19,22 +20,37 @@ class PokemonListController extends GetxController {
   }
 
   Future<void> getData() async {
-    print('get data triggered');
+
 
     final response = await PokemonListApi.getPokemonList();
 
     if(response.statusCode == 200){
-      pokemonsListModels = pekemonsListModelsFromJson(response.body);
+      pokemonsListModels?.value = pekemonsListModelsFromJson(response.body);
 
-      for(var pokemons in pokemonsListModels!){
-
-        debugPrint('checking the name of Pokemons ${pokemons.name}');
-
-      }
+      // for(var pokemons in pokemonsListModels!){
+      //
+      //   debugPrint('checking the name of Pokemons ${pokemons.name}');
+      //
+      // }
     }
     else {
       Get.snackbar('Error', 'Sorry Error Occurred ');
     }
 
   }
+
+  // search category
+  void searchCat(String searchStr) {
+    filteredPokemonListModels?.clear();
+    for (var item in pokemonsListModels!) {
+      if (item.name.contains(RegExp(searchStr, caseSensitive: false))) {
+        filteredPokemonListModels?.add(
+          item
+        );
+      }
+    }
+    // print(filteredPokemonListModels);
+    update();
+  }
+
 }

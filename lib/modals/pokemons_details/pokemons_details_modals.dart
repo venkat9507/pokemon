@@ -1,73 +1,73 @@
 // To parse this JSON data, do
 //
-//     final pekemonDetailsModels = pekemonDetailsModelsFromJson(jsonString);
+//     final pokemonDetailsModels = pokemonDetailsModelsFromJson(jsonString);
 
 import 'dart:convert';
 
-// PekemonDetailsModels pekemonDetailsModelsFromJson(String str) => PekemonDetailsModels.fromJson(json.decode(str));
+PokemonDetailsModels pokemonDetailsModelsFromJson(String str) => PokemonDetailsModels.fromJson(json.decode(str));
 
-// String pekemonDetailsModelsToJson(PekemonDetailsModels data) => json.encode(data.toJson());
+// String pokemonDetailsModelsToJson(PokemonDetailsModels data) => json.encode(data.toJson());
 
-class PekemonDetailsModels {
-  String number;
-  Name name;
-  String imageUrl;
-  String thumbnailUrl;
-  Sprites sprites;
-  List<Type> types;
-  List<String> weaknesses;
-  List<String> descriptions;
-  String specie;
-  String height;
-  String weight;
-  Breeding breeding;
-  Training training;
-  List<Ability> abilities;
-  TypesEffectiveness typesEffectiveness;
-  List<EvolutionChain> evolutionChain;
-  List<dynamic> previousEvolutions;
-  List<EvolutionChain> nextEvolutions;
-  List<dynamic> superEvolutions;
-  BaseStats baseStats;
-  List<Card> cards;
-  String soundUrl;
-  Moves moves;
-  String generation;
+class PokemonDetailsModels {
+  String? number;
+  String? name = 'No Name';
+  String? imageUrl;
+  String? thumbnailUrl;
+  Sprites? sprites;
+  List<Type>? types;
+  List<String>? weaknesses;
+  List<String>? descriptions;
+  String? specie;
+  String? height;
+  String? weight;
+  Breeding? breeding;
+  Training? training;
+  List<Ability>? abilities;
+  TypesEffectiveness? typesEffectiveness;
+  List<EvolutionChain>? evolutionChain;
+  List<dynamic>? previousEvolutions;
+  List<EvolutionChain>? nextEvolutions;
+  List<dynamic>? superEvolutions;
+  BaseStats? baseStats;
+  List<Card>? cards;
+  String? soundUrl;
+  Moves? moves;
+  String? generation;
 
-  PekemonDetailsModels({
-    required this.number,
-    required this.name,
-    required this.imageUrl,
-    required this.thumbnailUrl,
-    required this.sprites,
-    required this.types,
-    required this.weaknesses,
-    required this.descriptions,
-    required this.specie,
-    required this.height,
-    required this.weight,
-    required this.breeding,
-    required this.training,
-    required this.abilities,
-    required this.typesEffectiveness,
-    required this.evolutionChain,
-    required this.previousEvolutions,
-    required this.nextEvolutions,
-    required this.superEvolutions,
-    required this.baseStats,
-    required this.cards,
-    required this.soundUrl,
-    required this.moves,
-    required this.generation,
+  PokemonDetailsModels({
+    this.number,
+    this.name,
+    this.imageUrl,
+    this.thumbnailUrl,
+    this.sprites,
+    this.types,
+    this.weaknesses,
+    this.descriptions,
+    this.specie,
+    this.height,
+    this.weight,
+    this.breeding,
+    this.training,
+    this.abilities,
+    this.typesEffectiveness,
+    this.evolutionChain,
+    this.previousEvolutions,
+    this.nextEvolutions,
+    this.superEvolutions,
+    this.baseStats,
+    this.cards,
+    this.soundUrl,
+    this.moves,
+    this.generation,
   });
 
-  factory PekemonDetailsModels.fromJson(Map<String, dynamic> json) => PekemonDetailsModels(
+  factory PokemonDetailsModels.fromJson(Map<String, dynamic> json) => PokemonDetailsModels(
     number: json["number"],
-    name: nameValues.map[json["name"]]!,
+    name: json["name"],
     imageUrl: json["imageUrl"],
     thumbnailUrl: json["thumbnailUrl"],
     sprites: Sprites.fromJson(json["sprites"]),
-    types: List<Type>.from(json["types"].map((x) => typeValues.map[x]!)),
+    types: List<Type>.from(json["types"].map((x) => typeValues.map[x])),
     weaknesses: List<String>.from(json["weaknesses"].map((x) => x)),
     descriptions: List<String>.from(json["descriptions"].map((x) => x)),
     specie: json["specie"],
@@ -88,41 +88,41 @@ class PekemonDetailsModels {
     generation: json["generation"],
   );
 
-  Map<String, dynamic> toJson() => {
-    "number": number,
-    "name": nameValues.reverse[name],
-    "imageUrl": imageUrl,
-    "thumbnailUrl": thumbnailUrl,
-    "sprites": sprites.toJson(),
-    "types": List<dynamic>.from(types.map((x) => typeValues.reverse[x])),
-    "weaknesses": List<dynamic>.from(weaknesses.map((x) => x)),
-    "descriptions": List<dynamic>.from(descriptions.map((x) => x)),
-    "specie": specie,
-    "height": height,
-    "weight": weight,
-    "breeding": breeding.toJson(),
-    "training": training.toJson(),
-    "abilities": List<dynamic>.from(abilities.map((x) => x.toJson())),
-    "typesEffectiveness": typesEffectiveness.toJson(),
-    "evolutionChain": List<dynamic>.from(evolutionChain.map((x) => x.toJson())),
-    "previousEvolutions": List<dynamic>.from(previousEvolutions.map((x) => x)),
-    "nextEvolutions": List<dynamic>.from(nextEvolutions.map((x) => x.toJson())),
-    "superEvolutions": List<dynamic>.from(superEvolutions.map((x) => x)),
-    "baseStats": baseStats.toJson(),
-    "cards": List<dynamic>.from(cards.map((x) => x.toJson())),
-    "soundUrl": soundUrl,
-    "moves": moves.toJson(),
-    "generation": generation,
-  };
+  // Map<String, dynamic> toJson() => {
+  //   "number": number,
+  //   "name": nameValues.reverse[name],
+  //   "imageUrl": imageUrl,
+  //   "thumbnailUrl": thumbnailUrl,
+  //   "sprites": sprites.toJson(),
+  //   "types": List<dynamic>.from(types.map((x) => typeValues.reverse[x])),
+  //   "weaknesses": List<dynamic>.from(weaknesses.map((x) => x)),
+  //   "descriptions": List<dynamic>.from(descriptions.map((x) => x)),
+  //   "specie": specie,
+  //   "height": height,
+  //   "weight": weight,
+  //   "breeding": breeding.toJson(),
+  //   "training": training.toJson(),
+  //   "abilities": List<dynamic>.from(abilities.map((x) => x.toJson())),
+  //   "typesEffectiveness": typesEffectiveness.toJson(),
+  //   "evolutionChain": List<dynamic>.from(evolutionChain.map((x) => x.toJson())),
+  //   "previousEvolutions": List<dynamic>.from(previousEvolutions.map((x) => x)),
+  //   "nextEvolutions": List<dynamic>.from(nextEvolutions.map((x) => x.toJson())),
+  //   "superEvolutions": List<dynamic>.from(superEvolutions.map((x) => x)),
+  //   "baseStats": baseStats.toJson(),
+  //   "cards": List<dynamic>.from(cards.map((x) => x.toJson())),
+  //   "soundUrl": soundUrl,
+  //   "moves": moves.toJson(),
+  //   "generation": generation,
+  // };
 }
 
 class Ability {
-  String name;
-  String description;
+  String? name;
+  String? description;
 
   Ability({
-    required this.name,
-    required this.description,
+    this.name,
+    this.description,
   });
 
   factory Ability.fromJson(Map<String, dynamic> json) => Ability(
@@ -137,22 +137,22 @@ class Ability {
 }
 
 class BaseStats {
-  int hp;
-  int attack;
-  int defense;
-  int spAtk;
-  int spDef;
-  int speed;
-  int total;
+  int? hp;
+  int? attack;
+  int? defense;
+  int? spAtk;
+  int? spDef;
+  int? speed;
+  int? total;
 
   BaseStats({
-    required this.hp,
-    required this.attack,
-    required this.defense,
-    required this.spAtk,
-    required this.spDef,
-    required this.speed,
-    required this.total,
+    this.hp,
+    this.attack,
+    this.defense,
+    this.spAtk,
+    this.spDef,
+    this.speed,
+    this.total,
   });
 
   factory BaseStats.fromJson(Map<String, dynamic> json) => BaseStats(
@@ -177,12 +177,12 @@ class BaseStats {
 }
 
 class Breeding {
-  BreedingEgg egg;
-  List<Gender> genders;
+  BreedingEgg? egg;
+  List<Gender>? genders;
 
   Breeding({
-    required this.egg,
-    required this.genders,
+    this.egg,
+    this.genders,
   });
 
   factory Breeding.fromJson(Map<String, dynamic> json) => Breeding(
@@ -190,19 +190,19 @@ class Breeding {
     genders: List<Gender>.from(json["genders"].map((x) => Gender.fromJson(x))),
   );
 
-  Map<String, dynamic> toJson() => {
-    "egg": egg.toJson(),
-    "genders": List<dynamic>.from(genders.map((x) => x.toJson())),
-  };
+  // Map<String, dynamic> toJson() => {
+  //   "egg": egg.toJson(),
+  //   "genders": List<dynamic>.from(genders.map((x) => x.toJson())),
+  // };
 }
 
 class BreedingEgg {
-  List<String> groups;
-  String cycle;
+  List<String>? groups;
+  String? cycle;
 
   BreedingEgg({
-    required this.groups,
-    required this.cycle,
+    this.groups,
+    this.cycle,
   });
 
   factory BreedingEgg.fromJson(Map<String, dynamic> json) => BreedingEgg(
@@ -210,19 +210,19 @@ class BreedingEgg {
     cycle: json["cycle"],
   );
 
-  Map<String, dynamic> toJson() => {
-    "groups": List<dynamic>.from(groups.map((x) => x)),
-    "cycle": cycle,
-  };
+  // Map<String, dynamic> toJson() => {
+  //   "groups": List<dynamic>.from(groups.map((x) => x)),
+  //   "cycle": cycle,
+  // };
 }
 
 class Gender {
-  String type;
-  String percentage;
+  String? type;
+  String? percentage;
 
   Gender({
-    required this.type,
-    required this.percentage,
+    this.type,
+    this.percentage,
   });
 
   factory Gender.fromJson(Map<String, dynamic> json) => Gender(
@@ -237,21 +237,21 @@ class Gender {
 }
 
 class Card {
-  String number;
-  Name name;
-  String expansionName;
-  String imageUrl;
+  String? number;
+  String? name;
+  String? expansionName;
+  String? imageUrl;
 
   Card({
-    required this.number,
-    required this.name,
-    required this.expansionName,
-    required this.imageUrl,
+    this.number,
+    this.name,
+    this.expansionName,
+    this.imageUrl,
   });
 
   factory Card.fromJson(Map<String, dynamic> json) => Card(
     number: json["number"],
-    name: nameValues.map[json["name"]]!,
+    name: json["name"],
     expansionName: json["expansionName"],
     imageUrl: json["imageUrl"],
   );
@@ -277,19 +277,19 @@ final nameValues = EnumValues({
 });
 
 class EvolutionChain {
-  String number;
-  String name;
-  String imageUrl;
-  String thumbUrl;
-  String type;
+  String? number;
+  String? name;
+  String? imageUrl;
+  String? thumbUrl;
+  String? type;
   String? requirement;
 
   EvolutionChain({
-    required this.number,
-    required this.name,
-    required this.imageUrl,
-    required this.thumbUrl,
-    required this.type,
+    this.number,
+    this.name,
+    this.imageUrl,
+    this.thumbUrl,
+    this.type,
     this.requirement,
   });
 
@@ -313,22 +313,22 @@ class EvolutionChain {
 }
 
 class Moves {
-  List<EggElement> levelUp;
-  List<EggElement> technicalMachine;
-  List<EggElement> technicalRecords;
-  List<EggElement> egg;
-  List<EggElement> tutor;
-  List<dynamic> evolution;
-  List<dynamic> preEvolution;
+  List<EggElement>? levelUp;
+  List<EggElement>? technicalMachine;
+  List<EggElement>? technicalRecords;
+  List<EggElement>? egg;
+  List<EggElement>? tutor;
+  List<dynamic>? evolution;
+  List<dynamic>? preEvolution;
 
   Moves({
-    required this.levelUp,
-    required this.technicalMachine,
-    required this.technicalRecords,
-    required this.egg,
-    required this.tutor,
-    required this.evolution,
-    required this.preEvolution,
+    this.levelUp,
+    this.technicalMachine,
+    this.technicalRecords,
+    this.egg,
+    this.tutor,
+    this.evolution,
+    this.preEvolution,
   });
 
   factory Moves.fromJson(Map<String, dynamic> json) => Moves(
@@ -341,42 +341,42 @@ class Moves {
     preEvolution: List<dynamic>.from(json["preEvolution"].map((x) => x)),
   );
 
-  Map<String, dynamic> toJson() => {
-    "levelUp": List<dynamic>.from(levelUp.map((x) => x.toJson())),
-    "technicalMachine": List<dynamic>.from(technicalMachine.map((x) => x.toJson())),
-    "technicalRecords": List<dynamic>.from(technicalRecords.map((x) => x.toJson())),
-    "egg": List<dynamic>.from(egg.map((x) => x.toJson())),
-    "tutor": List<dynamic>.from(tutor.map((x) => x.toJson())),
-    "evolution": List<dynamic>.from(evolution.map((x) => x)),
-    "preEvolution": List<dynamic>.from(preEvolution.map((x) => x)),
-  };
+  // Map<String, dynamic> toJson() => {
+  //   "levelUp": List<dynamic>.from(levelUp.map((x) => x.toJson())),
+  //   "technicalMachine": List<dynamic>.from(technicalMachine.map((x) => x.toJson())),
+  //   "technicalRecords": List<dynamic>.from(technicalRecords.map((x) => x.toJson())),
+  //   "egg": List<dynamic>.from(egg.map((x) => x.toJson())),
+  //   "tutor": List<dynamic>.from(tutor.map((x) => x.toJson())),
+  //   "evolution": List<dynamic>.from(evolution.map((x) => x)),
+  //   "preEvolution": List<dynamic>.from(preEvolution.map((x) => x)),
+  // };
 }
 
 class EggElement {
-  Category category;
-  String move;
-  Type type;
-  String power;
-  String accuracy;
+  Category? category;
+  String? move;
+  Type? type;
+  String? power;
+  String? accuracy;
   int? level;
   int? technicalMachine;
   int? technicalRecord;
 
   EggElement({
-    required this.category,
-    required this.move,
-    required this.type,
-    required this.power,
-    required this.accuracy,
+    this.category,
+    this.move,
+    this.type,
+    this.power,
+    this.accuracy,
     this.level,
     this.technicalMachine,
     this.technicalRecord,
   });
 
   factory EggElement.fromJson(Map<String, dynamic> json) => EggElement(
-    category: categoryValues.map[json["category"]]!,
+    category: categoryValues.map[json["category"]],
     move: json["move"],
-    type: typeValues.map[json["type"]]!,
+    type: typeValues.map[json["type"]],
     power: json["power"],
     accuracy: json["accuracy"],
     level: json["level"],
@@ -429,18 +429,18 @@ final typeValues = EnumValues({
 });
 
 class Sprites {
-  String mainSpriteUrl;
-  String frontAnimatedSpriteUrl;
-  String backAnimatedSpriteUrl;
-  String frontShinyAnimatedSpriteUrl;
-  String backShinyAnimatedSpriteUrl;
+  String? mainSpriteUrl;
+  String? frontAnimatedSpriteUrl;
+  String? backAnimatedSpriteUrl;
+  String? frontShinyAnimatedSpriteUrl;
+  String? backShinyAnimatedSpriteUrl;
 
   Sprites({
-    required this.mainSpriteUrl,
-    required this.frontAnimatedSpriteUrl,
-    required this.backAnimatedSpriteUrl,
-    required this.frontShinyAnimatedSpriteUrl,
-    required this.backShinyAnimatedSpriteUrl,
+    this.mainSpriteUrl,
+    this.frontAnimatedSpriteUrl,
+    this.backAnimatedSpriteUrl,
+    this.frontShinyAnimatedSpriteUrl,
+    this.backShinyAnimatedSpriteUrl,
   });
 
   factory Sprites.fromJson(Map<String, dynamic> json) => Sprites(
@@ -461,18 +461,18 @@ class Sprites {
 }
 
 class Training {
-  String evYield;
-  String catchRate;
-  String baseFriendship;
-  String baseExp;
-  String growthRate;
+  String? evYield;
+  String? catchRate;
+  String? baseFriendship;
+  String? baseExp;
+  String? growthRate;
 
   Training({
-    required this.evYield,
-    required this.catchRate,
-    required this.baseFriendship,
-    required this.baseExp,
-    required this.growthRate,
+    this.evYield,
+    this.catchRate,
+    this.baseFriendship,
+    this.baseExp,
+    this.growthRate,
   });
 
   factory Training.fromJson(Map<String, dynamic> json) => Training(
@@ -493,44 +493,44 @@ class Training {
 }
 
 class TypesEffectiveness {
-  String normal;
-  String fire;
-  String water;
-  String electric;
-  String grass;
-  String ice;
-  String fighting;
-  String poison;
-  String ground;
-  String flying;
-  String psychic;
-  String bug;
-  String rock;
-  String ghost;
-  String dragon;
-  String dark;
-  String steel;
-  String fairy;
+  String? normal;
+  String? fire;
+  String ?water;
+  String? electric;
+  String? grass;
+  String? ice;
+  String? fighting;
+  String? poison;
+  String? ground;
+  String ?flying;
+  String? psychic;
+  String? bug;
+  String? rock;
+  String ?ghost;
+  String? dragon;
+  String ?dark;
+  String ?steel;
+  String ?fairy;
 
   TypesEffectiveness({
-    required this.normal,
-    required this.fire,
-    required this.water,
-    required this.electric,
-    required this.grass,
-    required this.ice,
-    required this.fighting,
-    required this.poison,
-    required this.ground,
-    required this.flying,
-    required this.psychic,
-    required this.bug,
-    required this.rock,
-    required this.ghost,
-    required this.dragon,
-    required this.dark,
-    required this.steel,
-    required this.fairy,
+    this.normal,
+    this.fire,
+    this.water,
+    this.electric,
+    this.grass,
+    this.ice,
+    this.fighting,
+    this.poison,
+    this.ground,
+    this.flying,
+    this.psychic,
+    this.bug,
+    this.rock,
+    this.ghost,
+    this.dragon,
+    this.dark,
+    this.steel,
+    this.fairy,
   });
 
   factory TypesEffectiveness.fromJson(Map<String, dynamic> json) => TypesEffectiveness(
